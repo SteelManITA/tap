@@ -30,20 +30,16 @@ while(1)
     print("Prediction")
     print(predictionValue)
 
-    data <- c(
-      tweetObj$id,
-      # tweetObj$text,
-      tweetObj$created_at,
-      tweetObj$timestamp_ms,
-      # tweetObj$source,
-      tweetObj$retweet_count,
-      tweetObj$retweeted,
-      tweetObj$geo,
-      # tweetObj$user$screen_name,
-      # tweetObj$user$name,
-      tweetObj$user$id,
-      predictionValue
-    )
+    data <- vector("character", 8)
+
+    data[1] = tweetObj$id
+    data[2] = tweetObj$created_at
+    data[3] = tweetObj$timestamp_ms
+    data[4] = tweetObj$retweet_count
+    data[5] = tweetObj$retweeted
+    data[6] = tweetObj$geo
+    data[7] = tweetObj$user$id
+    data[8] = predictionValue
 
     write.table(
       matrix(data, nrow=1), "tweet.csv",
