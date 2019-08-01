@@ -14,4 +14,3 @@ ADD conf/* /opt/flume/conf/
 ADD lib/* /opt/flume/lib/
 EXPOSE 44444
 
-ENTRYPOINT [ "start-flume" ]

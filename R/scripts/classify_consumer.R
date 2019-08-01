@@ -18,7 +18,7 @@ while(1)
 {
   tweet=rkafka.read(consumer)
   #print(tweet)
-  if (tweet != "") { 
+  if (tweet != "") {
     tweetObj=fromJSON(tweet)
     tweetText=stri_enc_toascii(tweetObj$text)
     print(tweetText)
@@ -29,6 +29,28 @@ while(1)
     predictionValue=as.String(prediction)
     print("Prediction")
     print(predictionValue)
+
+    data <- c(
+      tweetObj$id,
+      tweetObj$text,
+      tweetObj$created_at,
+      tweetObj$timestamp_ms,
+      tweetObj$source,
+      tweetObj$retweet_count,
+      tweetObj$retweeted,
+      tweetObj$geo,
+      tweetObj$text,
+      tweetObj$user$screen_name,
+      tweetObj$user$name,
+      tweetObj$user$id,
+      predictionValue
+    )
+
+    write.table(
+      matrix(data, nrow=1), "tweet.csv",
+      TRUE, TRUE, ",", "\n", "NA", ".", FALSE, FALSE, "escape", "UTF-8"
+    )
   }
 }
 rkafka.closeConsumer(consumer)
+
