@@ -32,25 +32,24 @@ while(1)
 
     data <- c(
       tweetObj$id,
-      tweetObj$text,
+      # tweetObj$text,
       tweetObj$created_at,
       tweetObj$timestamp_ms,
-      tweetObj$source,
+      # tweetObj$source,
       tweetObj$retweet_count,
       tweetObj$retweeted,
       tweetObj$geo,
-      tweetObj$text,
-      tweetObj$user$screen_name,
-      tweetObj$user$name,
+      # tweetObj$user$screen_name,
+      # tweetObj$user$name,
       tweetObj$user$id,
       predictionValue
     )
 
     write.table(
       matrix(data, nrow=1), "tweet.csv",
-      TRUE, TRUE, ",", "\n", "NA", ".", FALSE, FALSE, "escape", "UTF-8"
+      TRUE, TRUE,
+      " ", "\n", "NA", ".", FALSE, FALSE, "escape", "UTF-8"
     )
   }
 }
 rkafka.closeConsumer(consumer)
-
