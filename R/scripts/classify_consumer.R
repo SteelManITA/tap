@@ -19,6 +19,7 @@ while(1)
   tweet=rkafka.read(consumer)
   #print(tweet)
   if (tweet != "") {
+    print(tweet)
     tweetObj=fromJSON(tweet)
     tweetText=stri_enc_toascii(tweetObj$text)
     print(tweetText)
@@ -37,7 +38,7 @@ while(1)
     data[3] = tweetObj$timestamp_ms
     data[4] = tweetObj$retweet_count
     data[5] = tweetObj$retweeted
-    data[6] = tweetObj$geo
+    # data[6] = tweetObj$geo
     data[7] = tweetObj$user$id
     data[8] = predictionValue
 
